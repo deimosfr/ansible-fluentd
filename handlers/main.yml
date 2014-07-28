@@ -1,0 +1,10 @@
+---
+
+- name: compiling and installing elasticsearch plugin dependencies
+  command: /usr/lib/fluent/ruby/bin/fluent-gem install fluent-plugin-elasticsearch
+
+- name: restart fluentd
+  service: name=td-agent state=restarted
+
+- name: restart rsyslog
+  service: name=rsyslog state=restarted

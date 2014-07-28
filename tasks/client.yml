@@ -1,0 +1,19 @@
+---
+
+## Client
+# Forwarder
+- template: src=forwarder.conf.j2 dest=/etc/td-agent/config.d/forwarder.conf owner=root group=root mode=644
+
+# syslog
+- template: src=syslog.conf.j2 dest=/etc/td-agent/config.d/syslog.conf owner=root group=root mode=644
+  register: fluentd_syslog
+  notify: restart fluentd
+
+- lineinfile: dest=/etc/rsyslog.conf line="*.*          @127.0.0.1:5140"
+  when: fluentd_syslog|success
+  notify: restart rsyslog
+
+# Nginx
+- copy: src=nginx.conf dest=/etc/td-agent/config.d/nginx.conf owner=root group=root mode=644
+  notify: restart fluentd
+

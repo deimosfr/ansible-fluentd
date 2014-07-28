@@ -1,0 +1,7 @@
+# {{ ansible_managed }}
+<source>
+  type syslog
+  port {{ fluentd_plugin_syslog_port | default(5140) }}
+  bind {{ fluentd_plugin_syslog_ip | default('127.0.0.1') }}
+  tag syslog
+</source>

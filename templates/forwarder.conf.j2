@@ -1,0 +1,8 @@
+# {{ ansible_managed }}
+<match **>
+  type forward
+  <server>
+    host {{ fluentd_server_fqdn }}
+    port 24224
+  </server>
+</match>

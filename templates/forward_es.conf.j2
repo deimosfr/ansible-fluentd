@@ -1,0 +1,7 @@
+# {{ ansible_managed }}
+<match **>
+  type elasticsearch
+  logstash_format true
+  host {{ es_fqdn | default('localhost') }}
+  port {{ es_port | default(9200) }}
+</match>

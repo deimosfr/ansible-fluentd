@@ -1,0 +1,21 @@
+---
+## Server
+
+# ElasticSearch plugin
+- name: install fluentd plugins
+  apt: name={{ item }} state=present force=yes
+  tags: fluentd
+  with_items:
+    - build-essential
+    - ruby-dev
+    - libcurl4-openssl-dev
+    - make
+  notify: compiling and installing elasticsearch plugin dependencies
+  when: forward_to_es is defined or forward_to_es
+
+- template: src=forward_es.conf.j2 dest=/etc/td-agent/config.d/forward_es.conf owner=root group=root mode=644
+  notify: restart fluentd
+
+# Set receiver
+- copy: src=receiver.conf dest=/etc/td-agent/config.d/receiver.conf owner=root group=root mode=644
+  notify: restart fluentd
