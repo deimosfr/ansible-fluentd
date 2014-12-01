@@ -1,7 +1,7 @@
 Ansible Fluentd playbook
 =====
 
-This role installs and configures Fluentd on a server.
+This role installs and configures Fluentd v1.x on a Debian server.
 
 Requirements
 ------------
@@ -17,7 +17,7 @@ them are as follows.
 
 ```
 # fluentd fqdn used by forwarders to fluentd
-fluentd_server_fqdn: kibana.deimos.lan
+fluentd_server_fqdn: fluentd-server.fqdn
 
 # Address of elasticsearch used by fluentd
 es_fqdn: localhost
@@ -42,7 +42,7 @@ Examples
   roles:
     - fluentd
   vars:
-    - fluentd_server_fqdn: kibana.deimos.lan
+    - fluentd_server_fqdn: fluentd-server.fqdn
     - es_fqdn: localhost
     - es_port: 9200
     - fluentd_plugin_syslog_ip: 127.0.0.1
