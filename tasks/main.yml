@@ -22,23 +22,19 @@
     - '* hard nofile 65536'
 
 # install apt key
-- apt_key: url=http://packages.treasure-data.com/debian/RPM-GPG-KEY-td-agent state=present
+- apt_key: url=http://packages.treasuredata.com/GPG-KEY-td-agent state=present
 
 # set dedicated repository
-- apt_repository: repo='deb http://packages.treasure-data.com/debian/ lucid contrib' state=present
-
-# install debian 6 repository for ssl lib
-- apt_repository: repo='deb http://ftp.fr.debian.org/debian/ squeeze-lts main non-free contrib' state=present
-- apt: name=libssl0.9.8 state=present force=yes
+- apt_repository: repo='deb http://packages.treasuredata.com/2/debian/wheezy/ wheezy contrib' state=present
 
 # install fluentd with dependancies
 - name: install fluentd
   apt: name={{ item }} state=present force=yes
   tags: fluentd
   with_items:
-    - td-agent
     - openntpd
     - rsyslog
+    - td-agent
 
 # fluentd configuration
 - file: path=/etc/td-agent/config.d state=directory

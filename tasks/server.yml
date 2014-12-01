@@ -8,7 +8,7 @@
   with_items:
     - build-essential
     - ruby-dev
-    - libcurl4-openssl-dev
+    - libcurl4-gnutls-dev
     - make
   notify: compiling and installing elasticsearch plugin dependencies
   when: forward_to_es is defined or forward_to_es

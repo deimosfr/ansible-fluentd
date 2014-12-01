@@ -1,7 +1,7 @@
 ---
 
 - name: compiling and installing elasticsearch plugin dependencies
-  command: /usr/lib/fluent/ruby/bin/fluent-gem install fluent-plugin-elasticsearch
+  command: /opt/td-agent/embedded/bin/fluent-gem install fluent-plugin-elasticsearch
 
 - name: restart fluentd
   service: name=td-agent state=restarted
