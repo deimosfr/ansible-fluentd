@@ -1,0 +1,13 @@
+# fluentd fqdn used by forwarders to fluentd
+fluentd_server_fqdn: fluentd-server
+
+# Address of elasticsearch used by fluentd
+es_fqdn: localhost
+es_port: 9200
+
+# If this machine should forward to Elasticsearch
+forward_to_es: False
+
+# Syslog plugin
+fluentd_plugin_syslog_ip: 127.0.0.1
+fluentd_plugin_syslog_port: 5140
